@@ -32,3 +32,27 @@ jobs:
     - name: Push Docker image
       run: |
         docker push $IMAGE_NAME:${{ github.sha }}
+
+
+# 자동화를 위해 추가한 내용
+    - name: Update Kubernetes manifest
+      run: |
+        git clone https://github.com/jaehyung725/argocd_exam.git
+        cd app_exam-k8s/k8s/
+
+        echo "수정전 deployment.yaml"
+        cat deployment.yaml
+        echo "==================="
+
+        sed -i "s|image:.*|image: $IMAGE_NAME:${{ github.sha }}|g" deployment.yaml
+
+        echo "수정후 deployment.yaml"
+        cat deployment.yaml
+        echo "==================="
+
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+
+        git add .
+        git commit -m "update image tag ${{ github.sha }}"
+        git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/jaehyung725/argocd_exam.git```
