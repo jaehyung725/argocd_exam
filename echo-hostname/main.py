@@ -13,7 +13,7 @@ def read_root():
     # 이 값을 우선 사용하고, 없으면 일반 호스트 이름을 사용합니다.
     container_id = os.getenv("HOSTNAME", hostname)    
     return {
-        "message": f"Hello from version: v1.0 update === ~~~",
+        "message": f"Hello from version: v1.0 update === ~~~ **********",
         "container_id": container_id,
         "hostname": hostname
     }
