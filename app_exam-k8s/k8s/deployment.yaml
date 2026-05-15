@@ -18,7 +18,7 @@ spec:
       containers:
       - name: my-webserver
       # 이미지는 본인 이미지로 변경 필요
-        image: jaehyung725/echo-hostname:f7cacffd36f769861b6e8a47ca43b28c00f41c3a
+        image: jaehyung725/echo-hostname:06a717df4513d16aaba21ca1e1ba2b6c7b626b08
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
